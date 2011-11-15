@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smarty en Bancard</title>
+  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "smarty" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body id="store">
+<div id="banner">
+  <%= @page_title || "Smarty Store" %>
+  <%= image_tag("/images/logo_256.jpg", :height => 130, :width => 200) %>
+</div>
+<div id="columns">
+  <div id="side">
+    <a href="#">Home</a>
+    <a href="#">Questions</a>
+    <a href="#">News</a>
+    <a href="#">Contact</a>
+
+    <div id="cart">
+      <% if @cart %>
+          <%#= render :partial => 'carts/cart',
+                     :locals=> { :cart => @cart,
+                                 :message => 'Carrito de compras'} %>
+          <%= render :partial => 'carts/cart', :locals => {:cart => @cart, :message => 'Carrito de compras' }%>
+          <%# esto es igual a %>
+          <%#= render @cart, :message => 'Carrito de compras' %>
+          <%# AVERIGUA EL PARTIAL A RENDERIZAR A PARTIR DEL NOMBRE DE LA CLASE %>
+          <%# CREAR UNA VARIABLE LOCAL AL PARTIAL DE NOMBRE IGUAL A LA CLASE DE @cart %>
+
+      <% end %>
+    </div>
+  </div>
+
+  <div id="main">
+    <%= yield %>
+  </div>
+</div>
+<div class="clear"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<h1>Smart Phone Store</h1>
+
+<div id="smarts">
+  <% @smarts.each do |smart| %>
+      <div class="smart">
+
+        <div class="image">
+          <%= image_tag(smart.image_url, :height => "100" ) %>
+        </div>
+
+        <div class="content">
+          <h2 class="smart-name">
+            <%= smart.name %>
+          </h2>
+          <p>
+            <%= smart.descripcion %>
+          </p>
+        </div>
+
+        <div class="price">
+          <div>
+            <%= smart.price %>
+          </div>
+          <div>
+            <%= button_to "Comprar", line_items_path(:smart_id => smart.id), :remote => true %>
+          </div>
+        </div>
+
+        <div class="clear">
+        </div>
+
+      </div>
+  <% end %>
+</div>

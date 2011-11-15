@@ -1,0 +1,19 @@
+<%#
+    local variables
+        cart -> cart to be displayed
+        message -> Text Message as header
+ %>
+<h3> <%= message %></h3>
+  <ul>
+
+          <% cart.line_items.each do |line_item| %>
+              <li>
+                <div id="carritodescripcion"><%= line_item.smart.name %></div>
+                <div id="carritoprecio"><%= line_item.smart.price %></div>
+              </li>
+          <% end %>
+
+
+    </ul>
+    <h3> <div id="carritodescripcion"> Total = $ </div>
+    <div id="carritoprecio"><b><%= cart.total_amount %></b></div></h3>
